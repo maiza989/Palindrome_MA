@@ -1,0 +1,4 @@
+abc IS A SUBSEQUENCE of aaqbzcw. 
+abc IS NOT A SUBSEQUENCE of qrtsze. 
+ced IS A SUBSEQUENCE of checked.
+dead IS A SUBSEQUENCE of dread. 
