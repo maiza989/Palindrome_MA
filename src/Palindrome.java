@@ -1,7 +1,10 @@
 import java.util.Scanner;
 import java.util.regex.Pattern;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 public class Palindrome {
@@ -27,7 +30,7 @@ public class Palindrome {
 		return(j == m);
 		
 		}// end of isSubSequence
-	
+	/*
 	public void test() {
 		
 		
@@ -47,6 +50,7 @@ public class Palindrome {
 			
 		}
 	}
+	/*
 	/**
 	 * A method that gets an input of two different string from the user
 	 * and check if the first string is a subsequence of the second string.
@@ -122,22 +126,20 @@ public class Palindrome {
 		if(op == 'Y') {
 			
 			manual();
-			
-			//System.out.println();
-			//System.out.println("<END RUN>");
 		
 		}// end of if 2
 		if (op == 'N') {
 			
 			System.out.println("<END RUN>");
 			System.exit(0);
+			
 		}// end of  if 
 			
 		System.out.println("Would you like to enter more sequences? (Y/N):" );
 		
 		op = scan.nextLine().charAt(0);
 		
-	if(op == 'Y') {
+		if(op == 'Y') {
 			
 			manual();
 			
@@ -164,21 +166,50 @@ public class Palindrome {
 	 */
 	public void readFile() {
 		
+		BufferedReader reader = null;
 		
 		try {
-			File seq = new File("C:\\Users\\maith\\Desktop\\BU-299\\CS-215-1\\Palindrome_MA\\file.txt");
+			File file = new File("file.txt");
+			reader = new BufferedReader(new FileReader(file));
 			
-			Scanner scan = new Scanner(seq);
-			
-			while(scan.hasNextLine());
-				System.out.println(scan);
+			String line;
+			while((line = reader.readLine()) != null) {
+				System.out.println(line);
 				
+				
+			}// end of while
+			
+		}// end of try
+		catch(IOException e) {
+			e.printStackTrace();
+		}// end of catch
+		finally {
+			try {
+				reader.close();
+			}
+			catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+		/*
+		try {
+			
+			File file = new File("file.txt");
+			Scanner scan;
+			scan = new Scanner(file);
+			
+			while(scan.hasNextLine());{
+				String i = scan.nextLine();
+				System.out.println("" + i);
+			}
 				scan.close();
 		}// end of try
+		
 		catch(FileNotFoundException e) {
 			
 			e.printStackTrace();
 			
 		}// end of catch
+		*/
 	}// end of readFile
 }// end of class

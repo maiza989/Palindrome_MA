@@ -7,7 +7,7 @@ public class Application {
 	public static void main(String[] args) {
 	
 	Palindrome p = new Palindrome();
-	p.input();
+	p.readFile();
 /*
 	static boolean isSubSequence(String str1, String str2, int m, int n) {
 		
