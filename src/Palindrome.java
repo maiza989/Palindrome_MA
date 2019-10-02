@@ -87,13 +87,13 @@ public class Palindrome {
 	}// end of Strings
 	
 	/**
-	 * Get input from the user
+	 * Get input from the user manually or from a file
 	 * Check if the string input from the user is a subsequence of the other string.
 	 * 
 	 */
 	public void input() {
 		
-		String userInput;
+		String userInput = "";
 		char op;
 		Scanner scan = new Scanner (System.in);
 		
@@ -110,9 +110,9 @@ public class Palindrome {
 			 System.out.println("Enter the name of the file to process:");
 			 
 			 userInput = scan.nextLine();
-			 if(userInput == "sequences.txt") {
+			//while(userInput == "sequences.txt") {
 				 readFile();
-			 }
+			// }
 			 
 			 System.out.println("<END RUN>");
 			 System.exit(0);
@@ -162,21 +162,35 @@ public class Palindrome {
 	}// end of Stack
 	
 	/**
-	 * A method reading a file using Scanner.
+	 * A method reading a file using BufferedReader.
 	 */
 	public void readFile() {
 		
 		BufferedReader reader = null;
 		
 		try {
+			
 			File file = new File("file.txt");
 			reader = new BufferedReader(new FileReader(file));
 			
-			String line;
+			String line = "";
+			String second = "";
+			
+			int m = line.length();
+			int n = second.length();
 			while((line = reader.readLine()) != null) {
-				System.out.println(line);
-				
-				
+			
+				boolean r = isSubSequence(line, second, m , n);
+				if(r) {
+					
+					System.out.println(line + " IS A SUBSEQUENCE of " + second);
+					
+				}
+				else {
+					
+					System.out.println(line +" IS NOT A SUBSEQUENCE of "+ second);
+				}
+			
 			}// end of while
 			
 		}// end of try
@@ -200,7 +214,7 @@ public class Palindrome {
 			
 			while(scan.hasNextLine());{
 				String i = scan.nextLine();
-				System.out.println("" + i);
+				System.out.println(i);
 			}
 				scan.close();
 		}// end of try
