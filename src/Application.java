@@ -10,6 +10,7 @@ import java.util.Stack;;
 
 /**
  * call Palindrome class
+ * call method input 
  * @author maith
  *
  */
@@ -18,7 +19,7 @@ public class Application {
 	public static void main(String[] args) {
 	
 	Palindrome p = new Palindrome();
-	p.test();
+	p.input();
 	
 	}// end if main 
 }

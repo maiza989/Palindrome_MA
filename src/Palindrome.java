@@ -16,6 +16,10 @@ public class Palindrome {
 
 	
 	/**
+	 * Create Two Stacks 
+	 * two for loop to push characters
+	 * a for loop to pop characters from stack one 
+	 * for loop to check if the character is equal to what about to pop if so return true
 	 * A Method that compare the First String characters with the second string and see if it match
 	 * and return  true else return false.
 	 * @param str1
@@ -26,7 +30,41 @@ public class Palindrome {
 	 */
 	public boolean isSubSequence(String str1, String str2, int m, int n) {
 		
+		Stack<Character> seqOne = new Stack<>();
+		Stack<Character> seqTwo = new Stack<>();
+	
+		String in1 =""; 
+		String in2 = "";
 		
+		for(int i = 0; i < in2.length(); i++) {
+			char c = in2.charAt(i);
+			seqOne.push(c);
+		}
+		for(int j = 0; j < in1.length(); j++) {
+			char a = in1.charAt(j);
+			seqTwo.push(a);
+		}
+		
+		for(int f = 0; f < seqOne.size(); f++) {
+			char j = seqOne.pop();
+			for(int s = 0; s < seqTwo.size(); s++) {
+				if ( j == seqTwo.pop()) {
+				return true;
+				}
+		
+			}
+		}
+		int j = 0; 
+		
+		for (int i = 0; i < n && j < m; i++) 
+            if (in1.charAt(j) == in2.charAt(i)) 
+                j++; 
+				
+		return(j == m);
+		
+			
+		
+		/*
 		Stack<Character> seqOne = new Stack<>();
 		Stack<Character> seqTwo = new Stack<>();
 		
@@ -48,7 +86,7 @@ public class Palindrome {
 			}
 			else
 				return false;
-			
+			*/
 		/*
 		int j = 0; 
 		
@@ -60,11 +98,15 @@ public class Palindrome {
 		*/
 		}// end of isSubSequence
 	
+	/*
+	 * test method
+	 */
+	/*
 	public void test() {
 		
 		
-		String s = "ffas";
-		String s2 = "f";
+		String s = "adc";
+		String s2 = "adc";
 		int m = s.length();
 		int n = s2.length();
 		boolean r = isSubSequence(s, s2, m , n);
@@ -79,6 +121,7 @@ public class Palindrome {
 			
 		}
 	}
+	*/
 	
 	/**
 	 * A method that gets an input of two different string from the user
@@ -118,6 +161,8 @@ public class Palindrome {
 	
 	/**
 	 * Get input from the user manually or from a file
+	 * if manually the user input two strings
+	 * if file it will read the strings and determine if one is substring to the other.
 	 * Check if the string input from the user is a subsequence of the other string.
 	 * 
 	 */
