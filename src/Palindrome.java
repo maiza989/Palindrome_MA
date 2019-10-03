@@ -143,7 +143,7 @@ public class Palindrome {
 		
 		System.out.println("Enter the second sequence:");
 		
-		userInput = scan.nextLine();
+		userInputTwo = scan.nextLine();
 		
 		boolean r = isSubSequence(userInput, userInputTwo, m, n);
 		if(r) {
