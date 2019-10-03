@@ -1,8 +1,13 @@
+/**
+ * a Java program to determine if one string is a subsequence of another.
+ * @Author: Maitham Al-Ghamgham
+ * @version 1.0  /  10/03/2019
+ * programming project 2
+ * Fall/2019
+ */
 import java.util.Scanner;
-import java.util.regex.Pattern;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
@@ -20,22 +25,46 @@ public class Palindrome {
 	 * @return
 	 */
 	public boolean isSubSequence(String str1, String str2, int m, int n) {
+		
+		
+		Stack<Character> seqOne = new Stack<>();
+		Stack<Character> seqTwo = new Stack<>();
+		
+		for(int i = 0; i <= str1.length(); i++) {
+			seqOne.push(str1.charAt(i));
+		} 
+		
+		for(int j = 0; j <= str2.length(); j++) {
 			
+			seqTwo.push(str2.charAt(j));
+			
+		}
+		
+		if(str1 != null && str2 != null & str1.length() <= str2.length() & str2.contains(str1));
+		
+		for(int l = 0; l < str1.length() && l < str2.length(); l++);
+			if(seqOne.pop() == seqTwo.peek()) {
+			return true;
+			}
+			else
+				return false;
+			
+		/*
 		int j = 0; 
-	
+		
 		for (int i = 0; i < n && j < m; i++) 
             if (str1.charAt(j) == str2.charAt(i)) 
                 j++; 
 				
 		return(j == m);
-		
+		*/
 		}// end of isSubSequence
-	/*
+	
 	public void test() {
 		
 		
-		String s = "adc";
-		String s2 = "aqdec";
+		String s = "ffas";
+		String s2 = "f";
 		int m = s.length();
 		int n = s2.length();
 		boolean r = isSubSequence(s, s2, m , n);
@@ -50,7 +79,7 @@ public class Palindrome {
 			
 		}
 	}
-	/*
+	
 	/**
 	 * A method that gets an input of two different string from the user
 	 * and check if the first string is a subsequence of the second string.
@@ -70,7 +99,7 @@ public class Palindrome {
 		
 		System.out.println("Enter the second sequence:");
 		
-		userInputTwo = scan.nextLine();
+		userInput = scan.nextLine();
 		
 		boolean r = isSubSequence(userInput, userInputTwo, m , n);
 		if(r) {
@@ -81,9 +110,10 @@ public class Palindrome {
 		else {
 			
 			System.out.println( userInput +" IS NOT A SUBSEQUENCE of "+ userInputTwo);
+			
 		}
 		
-		
+	
 	}// end of Strings
 	
 	/**
@@ -108,12 +138,13 @@ public class Palindrome {
 		 else if (op == 'F') {
 			 
 			 System.out.println("Enter the name of the file to process:");
-			 
 			 userInput = scan.nextLine();
+			 
 			//while(userInput == "sequences.txt") {
 				 readFile();
-			// }
+			//}
 			 
+			 System.out.println();
 			 System.out.println("<END RUN>");
 			 System.exit(0);
 		 }
@@ -134,7 +165,8 @@ public class Palindrome {
 			System.exit(0);
 			
 		}// end of  if 
-			
+		
+		System.out.println();
 		System.out.println("Would you like to enter more sequences? (Y/N):" );
 		
 		op = scan.nextLine().charAt(0);
@@ -152,17 +184,12 @@ public class Palindrome {
 			System.out.println("<END RUN>");
 			System.exit(0);
 		}// end of  if 
-		scan.close();
+		
 	}// end of input
-	
-	
-	public void Stack() {
-	
-
-	}// end of Stack
 	
 	/**
 	 * A method reading a file using BufferedReader.
+	 * And a StringTokenizer to split the sequences.
 	 */
 	public void readFile() {
 		
@@ -170,25 +197,29 @@ public class Palindrome {
 		
 		try {
 			
-			File file = new File("file.txt");
+			File file = new File("sequences.txt");
 			reader = new BufferedReader(new FileReader(file));
 			
 			String line = "";
-			String second = "";
 			
-			int m = line.length();
-			int n = second.length();
 			while((line = reader.readLine()) != null) {
 			
-				boolean r = isSubSequence(line, second, m , n);
+				String[] sequenceInfo = line.split(",");
+				
+				String str1 = sequenceInfo[0];
+				String str2 = sequenceInfo[1];
+				int m = str1.length();
+				int n = str2.length();
+				
+				boolean r = isSubSequence(str1, str2, m , n);
 				if(r) {
 					
-					System.out.println(line + " IS A SUBSEQUENCE of " + second);
+					System.out.println(str1 + " IS A SUBSEQUENCE of " + str2);
 					
 				}
 				else {
 					
-					System.out.println(line +" IS NOT A SUBSEQUENCE of "+ second);
+					System.out.println(str1 +" IS NOT A SUBSEQUENCE of "+ str2);
 				}
 			
 			}// end of while
