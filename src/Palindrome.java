@@ -19,7 +19,7 @@ public class Palindrome {
 	 * Create Two Stacks 
 	 * two for loop to push characters
 	 * a for loop to pop characters from stack one 
-	 * for loop to check if the character is equal to what about to pop if so return true
+	 * s nested for loop to check if the character is equal to what about to pop if so return true
 	 * A Method that compare the First String characters with the second string and see if it match
 	 * and return  true else return false.
 	 * @param str1
@@ -33,36 +33,37 @@ public class Palindrome {
 		Stack<Character> seqOne = new Stack<>();
 		Stack<Character> seqTwo = new Stack<>();
 	
-		String in1 =""; 
-		String in2 = "";
-		
-		for(int i = 0; i < in2.length(); i++) {
-			char c = in2.charAt(i);
+		for(int i = 0; i < str1.length(); i++) {
+			char c = str1.charAt(i);
 			seqOne.push(c);
-		}
-		for(int j = 0; j < in1.length(); j++) {
-			char a = in1.charAt(j);
+			
+		}// end of for loop1
+		
+		for(int j = 0; j < str2.length(); j++) {
+			char a = str2.charAt(j);
 			seqTwo.push(a);
-		}
+			
+		}// end of for loop2
 		
 		for(int f = 0; f < seqOne.size(); f++) {
 			char j = seqOne.pop();
 			for(int s = 0; s < seqTwo.size(); s++) {
 				if ( j == seqTwo.pop()) {
 				return true;
-				}
-		
-			}
-		}
-		int j = 0; 
-		
-		for (int i = 0; i < n && j < m; i++) 
-            if (in1.charAt(j) == in2.charAt(i)) 
-                j++; 
 				
-		return(j == m);
-		
+				}// end of if
+				
+			}// end of nested for loop2
 			
+		}// end of nested for loop1
+		if(m == n) {
+		return true;
+		}
+		else
+			return false;
+		
+		
+
 		
 		/*
 		Stack<Character> seqOne = new Stack<>();
@@ -101,15 +102,15 @@ public class Palindrome {
 	/*
 	 * test method
 	 */
-	/*
+	
 	public void test() {
 		
 		
 		String s = "adc";
-		String s2 = "adc";
+		String s2 = "mmmm";
 		int m = s.length();
 		int n = s2.length();
-		boolean r = isSubSequence(s, s2, m , n);
+		boolean r = isSubSequence(s, s2, m, n);
 		if(r) {
 			
 			System.out.println(s + " IS A SUBSEQUENCE of " + s2);
@@ -121,7 +122,7 @@ public class Palindrome {
 			
 		}
 	}
-	*/
+	
 	
 	/**
 	 * A method that gets an input of two different string from the user
@@ -144,7 +145,7 @@ public class Palindrome {
 		
 		userInput = scan.nextLine();
 		
-		boolean r = isSubSequence(userInput, userInputTwo, m , n);
+		boolean r = isSubSequence(userInput, userInputTwo, m, n);
 		if(r) {
 			
 			System.out.println(userInput + " IS A SUBSEQUENCE of " + userInputTwo);
@@ -256,7 +257,7 @@ public class Palindrome {
 				int m = str1.length();
 				int n = str2.length();
 				
-				boolean r = isSubSequence(str1, str2, m , n);
+				boolean r = isSubSequence(str1, str2, m, n);
 				if(r) {
 					
 					System.out.println(str1 + " IS A SUBSEQUENCE of " + str2);
